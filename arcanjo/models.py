@@ -11,4 +11,8 @@ class Contact(models.Model):
     email = models.EmailField(max_length=50)
     created_date = models.DateTimeField(default=timezone.now)
     description = models.TextField()
+
+    # Retorna o nome do usuário dentro de contacts no admin do django
+    def __str__(self) -> str:
+        return f'{self.first_name} {self.last_name}'
     

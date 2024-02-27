@@ -13,3 +13,10 @@ class ContactAdmin(admin.ModelAdmin):
     list_max_show_all = 100 # Mostra tudo vai mostrar os últimos 100
     # list_editable = 'first_name', 'last_name'
     list_display_links = 'id', 'first_name', # acesso a parte de edição do contact
+
+
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = 'name', # Dados visiveis no contacts
+    ordering = '-id', # Mostra os contatos na ordem decrescente

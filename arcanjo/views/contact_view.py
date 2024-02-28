@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from arcanjo.models import Contact
 
+
 def index(request):
-    contacts = Contact.objects.all()
+    '''seleciona todos os contatos onde o campo show for true e
+    mostrar em ordem decrescente'''
+    contacts = Contact.objects.filter(show=True).order_by('-id')[:10]
     context = {'contacts': contacts}
 
-    return render(
-        request, 'arcanjo/index.html', context
-    )
+    print(contacts.query)
+
+    return render(request, 'arcanjo/index.html', context)

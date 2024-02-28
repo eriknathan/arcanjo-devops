@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-# Create your models here.
 
 class Category(models.Model):
     class Meta:
@@ -32,4 +31,3 @@ class Contact(models.Model):
     # Retorna o nome do contato dentro de contacts no admin do django
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
-    

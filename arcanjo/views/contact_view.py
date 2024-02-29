@@ -16,7 +16,7 @@ def index(request):
     context = {'page_obj': page_obj, 'site_title': 'Contatos - '}
 
     # print(contacts.query)
-    return render(request, 'arcanjo/index.html', context)
+    return render(request, 'contact/index.html', context)
 
 
 def search(request):
@@ -39,11 +39,10 @@ def search(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-
     context = {'page_obj': page_obj, 'site_title': 'Contatos - '}
     # print(contacts.query)
 
-    return render(request, 'arcanjo/index.html', context)
+    return render(request, 'contact/index.html', context)
 
 
 def contact(request, contact_id):
@@ -55,4 +54,4 @@ def contact(request, contact_id):
     context = {'contact': single_contact, 'site_title': site_title}
 
     # print(single_contact.query)
-    return render(request, 'arcanjo/contact.html', context)
+    return render(request, 'contact/contact.html', context)

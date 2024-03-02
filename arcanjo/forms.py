@@ -8,10 +8,18 @@ class ContactForm(forms.ModelForm):
     last_name = forms.CharField(label='Segundo Nome')
     phone = forms.CharField(label='Telefone')
     email = forms.EmailField(label='E-mail')
+    picture = forms.ImageField(
+        label='Imagem',
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'image/*'
+            }
+        )
+    )
 
     class Meta:
         model = models.Contact
-        fields = ('first_name', 'last_name', 'phone', 'email', 'description', 'category',)
+        fields = ('first_name', 'last_name', 'phone', 'email', 'description', 'category', 'picture',)
 
     def clean(self):
         cleaned_data = self.cleaned_data

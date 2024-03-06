@@ -16,7 +16,7 @@ def index(request):
     context = {'page_obj': page_obj, 'site_title': 'Contatos - '}
 
     # print(contacts.query)
-    return render(request, 'contact/index2.html', context)
+    return render(request, 'contact/index.html', context)
 
 
 def search(request):
@@ -42,7 +42,7 @@ def search(request):
     context = {'page_obj': page_obj, 'site_title': 'Contatos - '}
     # print(contacts.query)
 
-    return render(request, 'contact/index2.html', context)
+    return render(request, 'contact/index.html', context)
 
 
 def contact(request, contact_id):

@@ -4,7 +4,7 @@ from arcanjo import views
 app_name = 'arcanjo'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('home/', views.index, name='index'),
     path('search/', views.search, name='search'),
 
     # CRUD
@@ -15,7 +15,7 @@ urlpatterns = [
 
     # CRUD - User
     path('user/create/', views.register, name='register'),
-    path('user/login/', views.login_view, name='login'),
+    path('', views.login_view, name='login'),
     path('user/logout/', views.logout_view, name='logout'),
     path('user/update/', views.user_update, name='user_update'),
 ]

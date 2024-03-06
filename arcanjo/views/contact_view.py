@@ -9,14 +9,14 @@ def index(request):
     mostrar em ordem decrescente'''
     contacts = Contact.objects.filter(show=True).order_by('-id')
 
-    paginator = Paginator(contacts, 10)
+    paginator = Paginator(contacts, 12)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     context = {'page_obj': page_obj, 'site_title': 'Contatos - '}
 
     # print(contacts.query)
-    return render(request, 'contact/index.html', context)
+    return render(request, 'contact/index2.html', context)
 
 
 def search(request):
@@ -42,7 +42,7 @@ def search(request):
     context = {'page_obj': page_obj, 'site_title': 'Contatos - '}
     # print(contacts.query)
 
-    return render(request, 'contact/index.html', context)
+    return render(request, 'contact/index2.html', context)
 
 
 def contact(request, contact_id):

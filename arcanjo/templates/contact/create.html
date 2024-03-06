@@ -1,8 +1,11 @@
-{% extends "global/base.html" %}
+{% extends "global/base2.html" %}
 
 {% block content %}
     <div class="form-wrapper">
-        <h2>Contato</h2>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard - Criar Contato</h1>
+            <a href="{% url 'arcanjo:index' %}" class="btn btn-primary">Voltar</a>
+          </div>
 
         <form action="{{ form_action }}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -35,12 +38,10 @@
                 </div>
             {% endif %}
 
-            <div class="form-content">
-                <div class="form-group">
-                <button class="btn" type="submit">Enviar</button>
-                </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Enviar</button>
             </div>
-
+            <br>
         </form>
     </div>
 {% endblock content %}

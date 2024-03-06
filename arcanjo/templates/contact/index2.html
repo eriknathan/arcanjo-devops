@@ -1,0 +1,59 @@
+{% extends "global/base2.html" %}
+
+{% block content %}
+{% if page_obj %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  
+  <h1 class="h2">Dashboard - Contatos</h1>
+  {% if user.is_authenticated %}
+    <a href="{% url 'arcanjo:create' %}" class="btn btn-primary">Criar contato</a>
+  {% endif %}
+
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <caption>Lista de usuários</caption>
+    <thead>
+      <tr class="table-secondary">
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Sobrenome</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">E-mail</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contact in page_obj %}
+      <tr>
+        <td><a class="table-link" href="{% url 'arcanjo:contact' contact.id %}">
+          {{ contact.id }}
+        </a>
+      </td>
+      <td class="table-cel">
+        {{ contact.first_name }}
+      </td>
+      <td class="table-cel">
+        {{ contact.last_name }}
+      </td>
+      <td class="table-cel">
+        {{ contact.phone }}
+      </td>
+      <td class="table-cel">
+        {{ contact.email }}
+      </td>
+      {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% else %}
+  <br>
+  <div class="single-contact">
+    <h1 class="single-contact-name">
+      Nenhum contato encontrado!
+    </h1>
+  </div>
+{% endif %}
+{% endblock content %}

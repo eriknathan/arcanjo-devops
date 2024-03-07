@@ -1,9 +1,40 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar</button>
-</form>
+    <div class="form-wrapper">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Adicionar Projeto</h1>
+            <a href="{% url 'services:projects' %}" class="btn btn-primary">Voltar</a>
+        </div>
+
+        <form action="{{ form_action }}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-content">
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        
+                        {{ field.errors }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.non_field_errors %}
+                <div class="form-content">
+                    <div class="form-group">
+                        <div class="message error">
+                            {{ form.non_field_errors }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+            <br>
+        </form>
+    </div>
 {% endblock content %}

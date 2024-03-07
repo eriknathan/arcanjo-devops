@@ -2,10 +2,12 @@
 
 {% block content %}
     <div class="form-wrapper">
+        <br>
         {% if user.is_authenticated %}
             <p>Você fez login como {{ user.username }}.
                 Clique <a href="{% url 'arcanjo:logout' %}">aqui</a> para sair.
             </p>
+            <p>Acessar home: <a href="{% url 'arcanjo:index' %}">aqui</a></p>
         {% else %}
             <div class="container">
                 <div class="row">

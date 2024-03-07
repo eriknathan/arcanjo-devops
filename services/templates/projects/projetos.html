@@ -1,0 +1,67 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<br>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Projetos</h1>
+    <a href="{% url 'services:create' %}" class="btn btn-primary">Novo Projeto</a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <caption>Lista de Projetos</caption>
+    <thead>
+      <tr class="table-secondary">
+        <th scope="col">Nome do Projeto</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Status</th>
+        <th scope="col">Tecnologia</th>
+        <th scope="col">Banco de Dados</th>
+        <th scope="col">URL do Projeto</th>
+        <th scope="col">Nome do servidor</th>
+        <th scope="col">IP do servidor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for project in projects %}
+        <tr>
+          <td><a class="table-link" href="#">
+            {{ project.project_name }}
+          </a>
+          </td>
+          <td class="table-cel">
+            {{ project.category }}
+          </td>
+          <td class="table-cel">
+            {{ project.status }}
+          </td>
+          <td class="table-cel">
+            {{ project.technology }}
+          </td>
+          <td class="table-cel">
+            {{ project.database }}
+          </td>
+          <td class="table-cel"><a href="{{ project.project_url }}">
+            {{ project.project_url }}
+          </td>
+          <td class="table-cel">
+            {{ project.server_name }}
+          </td>
+          <td class="table-cel">
+            {{ project.server_ip }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% comment %} {% else %}
+  <br>
+  <div class="single-contact">
+    <h1 class="single-contact-name">
+      Nenhum contato encontrado!
+    </h1>
+  </div>
+{% endif %} {% endcomment %}
+
+{% endblock content %} 

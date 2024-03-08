@@ -1,0 +1,35 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+    <div class="single-contact">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1>Nome do Projeto: {{ project.project_name }}</h1>
+        <a href="{% url 'services:projects' %}" class="btn btn-primary">Voltar</a>
+      </div>      
+
+        {% comment %} <p><b>ID: </b> {{ project.id }}</p> {% endcomment %}
+        <p><b>Categoria: </b> {{ project.category }}</p>
+        <p><b>Status: </b> {{ project.status }}</p>
+        <p><b>Ambiente: </b> {{ project.ambiente }}</p>
+        <p><b>Tecnologia: </b> {{ project.technology }}</p>
+        <p><b>Banco de Dados: </b> {{ project.database }}</p>
+        <p><b>URL do Projeto: </b> <a href="{{ project.project_url }}">{{ project.project_url }}</a></p>
+        <p><b>Nome do Servidor: </b> {{ project.server_name }}</p>
+        <p><b>IP do Servidor: </b> {{ project.server_ip }}</p>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a class="btn btn-primary" href="{% url 'services:update' project.id %}">Update</a></button>      
+          <a class="btn btn-danger" href="{% url 'services:delete' project.id %}">Delete</a></button>  
+
+          <form action="{% url 'services:delete' project.id %}" method="POST">
+            {% csrf_token %}
+            <br>
+            {% if confirmation == 'no' %}
+              <input type="hidden" name="confirmation" value="yes">
+              <button class="btn btn-outline-warning d-grid gap-2 col-6 mx-auto" type="submit">Confirma?</button>
+            {% endif %}
+          </form>
+          <br>
+        </div>
+    </div>
+{% endblock content %}

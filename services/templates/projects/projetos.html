@@ -13,6 +13,7 @@
       <tr class="table-secondary">
         <th scope="col">Nome do Projeto</th>
         <th scope="col">Categoria</th>
+        <th scope="col">Ambiente</th>
         <th scope="col">Status</th>
         <th scope="col">Tecnologia</th>
         <th scope="col">Banco de Dados</th>
@@ -24,7 +25,7 @@
     <tbody>
       {% for project in projects %}
         <tr>
-          <td><a class="table-link" href="#">
+          <td><a class="table-link" href="{% url 'services:project' project.id %}">
             {{ project.project_name }}
           </a>
           </td>
@@ -32,8 +33,14 @@
             {{ project.category }}
           </td>
           <td class="table-cel">
-            {{ project.status }}
+            {{ project.ambiente }}
           </td>
+          {% if project.status %}
+            <td class="table-cel p-2 mb-1 bg-success text-white">{{ project.status }}</td> 
+          {% else %}
+            <td class="table-cel p-2 mb-1 bg-danger text-white">{{ project.status }}</td>
+          {% endif %}
+          
           <td class="table-cel">
             {{ project.technology }}
           </td>
@@ -54,13 +61,5 @@
     </tbody>
   </table>
 </div>
-{% comment %} {% else %}
-  <br>
-  <div class="single-contact">
-    <h1 class="single-contact-name">
-      Nenhum contato encontrado!
-    </h1>
-  </div>
-{% endif %} {% endcomment %}
 
 {% endblock content %} 

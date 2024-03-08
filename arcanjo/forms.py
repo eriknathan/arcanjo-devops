@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from . import models
 from django.contrib.auth import password_validation
 
+
 class ContactForm(forms.ModelForm):
     first_name = forms.CharField(label='Primeiro Nome')
     last_name = forms.CharField(label='Segundo Nome')

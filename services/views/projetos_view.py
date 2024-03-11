@@ -6,7 +6,7 @@ from services.models import Project
 
 def projects(request):
     projects = Project.objects.all()
-    context = {'projects': projects}
+    context = {'projects': projects,  'site_title': 'Projetos - '}
     return render(request, 'projects/projetos.html', context)
 
 

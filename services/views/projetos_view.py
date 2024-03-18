@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from services.forms import ProjetoForm
 from services.models import Project
+import docker
 
 
 def projects(request):
@@ -99,3 +100,23 @@ def delete(request, contact_id):
             'confirmation': confirmation,
         }
     )
+
+
+def docker_list(request):
+    client = docker.from_env()
+    containers = client.containers.list()
+
+    container_info = []
+    for container in containers:
+        container_info.append({
+            "Nome": container.name,
+            "Status": container.status,
+            "ID": container.short_id,
+            "Imagem": container.image.tags[0] if container.image.tags else "",
+            # "Comando": container.attrs['Config']['Cmd'] if 'Cmd' in container.attrs['Config'] else "",
+            # "Portas": container.ports
+        })
+
+    context = {'containers': container_info}
+
+    return render(request, 'projects/container_list.html', context)

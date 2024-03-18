@@ -30,8 +30,25 @@ class StatusAdmin(admin.ModelAdmin):
     # Mostra os contatos na ordem decrescente
     ordering = '-id',
 
+
 @admin.register(models.Ambiente)
 class AmbienteProjectAdmin(admin.ModelAdmin):
+    # Dados visiveis no contacts
+    list_display = 'name',
+    # Mostra os contatos na ordem decrescente
+    ordering = '-id',
+
+
+@admin.register(models.ServidorName)
+class ServidorNameAdmin(admin.ModelAdmin):
+    # Dados visiveis no contacts
+    list_display = 'name',
+    # Mostra os contatos na ordem decrescente
+    ordering = '-id',
+
+
+@admin.register(models.ServidorIp)
+class ServidorIpAdmin(admin.ModelAdmin):
     # Dados visiveis no contacts
     list_display = 'name',
     # Mostra os contatos na ordem decrescente

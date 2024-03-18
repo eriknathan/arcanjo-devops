@@ -1,0 +1,39 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Projetos</h1>
+    <a href="{% url 'services:create' %}" class="btn btn-primary">Novo Projeto</a>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <caption>Lista de Projetos</caption>
+    <thead>
+      <tr class="table-secondary">
+        <th scope="col">Nome</th>
+        <th scope="col">Status</th>
+        <th scope="col">ID</th>
+        <th scope="col">Imagem</th>
+        {% comment %} <th scope="col">Comando</th>
+        <th scope="col">Portas</th> {% endcomment %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for container in containers %}
+        <tr>
+            <td> <a class="table-link" href="#">
+              {{ container.Nome }}
+            </td>
+            <td>{{ container.Status }}</td>
+            <td>{{ container.ID }}</td>
+            <td>{{ container.Imagem }}</td>
+            {% comment %} <td>{{ container.Comando }}</td>
+            <td>{{ container.Portas }}</td> {% endcomment %}
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %} 
